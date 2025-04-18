@@ -45,3 +45,15 @@ returns-management/
 ├── docker-compose.yml
 ├── .gitignore
 └── README.md
+
+
+🔒 Create Users/Roles logic
+🧠 Build DB Models based on real table structure
+🔌 Write CRUD logic in backend
+🚪 Add Login + Role-based Access
+🌐 Create Vue frontend (dashboard + login + data entry)
+📊 Summary View (table + graph)
+🧠 Suspicious Return Detection
+☁️ Connect frontend with backend APIs
+🔁 Lambda trigger (optional for prod)
+✅ Test it all works
