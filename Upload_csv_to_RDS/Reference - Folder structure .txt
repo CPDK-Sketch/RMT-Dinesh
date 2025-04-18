@@ -1,0 +1,47 @@
+returns-management/
+├── backend/
+│   ├── app/
+│   │   ├── api/                # All route files (FastAPI endpoints)
+│   │   │   └── v1/
+│   │   │       ├── returns.py
+│   │   │       ├── auth.py
+│   │   ├── core/               # Core configs, security, settings
+│   │   │   ├── config.py
+│   │   │   ├── security.py
+│   │   ├── db/                 # DB engine, session, init
+│   │   │   ├── base.py
+│   │   │   ├── session.py
+│   │   ├── models/             # SQLAlchemy ORM models
+│   │   │   ├── order.py
+│   │   │   ├── return_data.py
+│   │   ├── schemas/            # Pydantic request/response validation
+│   │   │   ├── order.py
+│   │   │   ├── return_data.py
+│   │   ├── crud/               # Business logic
+│   │   │   ├── order.py
+│   │   │   ├── return_data.py
+│   │   ├── main.py             # FastAPI instance
+│   │   ├── utils/              # Helper tools (e.g. suspicious return detection)
+│   │   │   └── analytics.py
+│   ├── requirements.txt
+│   ├── Dockerfile
+│   └── .env
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── views/
+│   │   ├── router/
+│   │   ├── store/              # Vuex or Pinia for state mgmt
+│   │   ├── App.vue
+│   │   └── main.js
+│   ├── .env
+│   ├── package.json
+│   └── vite.config.js
+├── infra/                     # Terraform or CloudFormation later
+│   ├── ec2_setup.sh
+│   └── rds_setup.sql
+├── docker-compose.yml
+├── .gitignore
+└── README.md
