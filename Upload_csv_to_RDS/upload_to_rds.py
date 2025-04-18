@@ -2,23 +2,25 @@ import mysql.connector
 import pandas as pd
 
 # AWS RDS Connection Parameters
-rds_host = "returnsdb.cx46s84o832r.eu-west-2.rds.amazonaws.com"  
+rds_host = "returns-db.c5oyyuuuetdv.eu-west-1.rds.amazonaws.com"  
 username = "admin"   # r DB username
-password = "Huboo123456789"   #  DB password
-database = "returns_table"       # database name
+password = "Huboo1234567890"   #  DB password
+#database = "returns_db"       # database name
 
 # Path to your CSV file in GitHub Codespaces
-csv_file_path = "data/your_file.csv"  # Example: "data/mydata.csv"
+csv_file_path = "/workspaces/RMT-Dinesh/Tables/Orders-table.csv"  # Example: "data/mydata.csv"
 
 # Connect to the RDS instance
 conn = mysql.connector.connect(
     host=rds_host,
     user=username,
     password=password,
-    database=database
+    #database=database
 )
 
 cursor = conn.cursor()
+cursor.execute("USE returns_management")
+
 
 # Read the CSV file using pandas
 data = pd.read_csv(csv_file_path)
@@ -27,7 +29,15 @@ data = pd.read_csv(csv_file_path)
 columns = data.columns
 
 # Prepare the INSERT query
-insert_query = f"INSERT INTO your_table_name ({', '.join(columns)}) VALUES ({', '.join(['%s'] * len(columns))})"
+#insert_query = f"INSERT INTO orders ({', '.join(columns)}) VALUES ({', '.join(['%s'] * len(columns))})"
+insert_query = """
+INSERT INTO orders (
+    `Order_Date`, `First_Name`, `Last_Name`, `Shipment_ID`, `Client_Order_Id`,
+    `PI`, `Order_Quantity`,  `Hub`, `Client_ID`,
+    `Shipping_Method`, `Address`
+)
+VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+"""
 
 # Insert data into the RDS database
 for row in data.itertuples(index=False, name=None):
