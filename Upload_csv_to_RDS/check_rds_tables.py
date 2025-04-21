@@ -2,7 +2,7 @@ import mysql.connector
 
 # Connect to RDS
 conn = mysql.connector.connect(
-    host = "returns-db.c5oyyuuuetdv.eu-west-1.rds.amazonaws.com",  
+    host = "returnsdb.cx46s84o832r.eu-west-2.rds.amazonaws.com",  
     username = "admin",   # r DB username
     password = "Huboo1234567890"   #  DB password
 )
